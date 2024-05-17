@@ -1,0 +1,50 @@
+﻿@page
+@model ejercicios.Pages.ImcModel
+@{
+	ViewData["Title"] = "IMC";
+}
+
+<div class="container">
+
+	<h1>Calculadora de IMC</h1>
+
+	<form method="post">
+		<div class="form-group">
+			<label for="peso">Peso (kg)</label>
+			<input type="number" class="form-control" id="Masa" name="Masa" asp-for="Masa" required>
+		</div>
+		<div class="form-group">
+			<label for="altura">Altura (cm)</label>
+			<input type="number" class="form-control" id="Estatura" name="Estatura" asp-for="Estatura" required>
+		</div>
+		<button type="submit" class="btn btn-primary">Calcular</button>
+	</form>
+
+	@if (Model.Imc != "0")
+	{
+		<div class="alert alert-info mt-3">
+			<p>Tu IMC es: @Model.Imc</p>
+			<p>
+				Tu Tipo de IMC es @Model.Tipo
+			</p>
+			<img src=@Model.UrlI alt="IMC" class="img-fluid">
+		</div>
+		
+	}
+	@if (!ModelState.IsValid)
+	{
+		<div class="alert alert-danger mt-3">
+			<ul>
+				@foreach (var modelStateEntry in ModelState.Values)
+				{
+					foreach (var error in modelStateEntry.Errors)
+					{
+						<li>@error.ErrorMessage</li>
+					}
+				}
+			</ul>
+		</div>
+	}
+
+
+</div>

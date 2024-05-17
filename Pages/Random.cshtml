@@ -1,0 +1,57 @@
+﻿@page
+@model ejercicios.Pages.RandomModel
+@{
+    ViewData["Title"] = "Random";
+    var numero = Model.ints;
+}
+
+<div class="container">
+    <h2>Numeros random</h2>
+
+    <div class="row">
+        <div class="col">
+            <ul class="list-inline">
+                @foreach (var num in numero)
+                {
+                    <li class="list-inline-item">@num</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <section>
+        <table class="table">
+           <thead>
+               <tr>
+					<th>Suma de los numeros</th>
+                    <th>Media de los numeros</th>
+                    <th>Moda de los numeros</th>
+                    <th>Mediana de los numeros</th>
+           </thead>
+           <tbody>
+			   <tr>
+				   <td>@Model.Suma</td>
+                    <td>@Model.Promedio</td>
+				   <td>@Model.Moda</td>
+				   <td>@Model.Mediana</td>
+			   </tr>
+        </table>
+    </section>
+    <div>
+        <button id="regenerate" class="btn btn-dark">
+            Generar nuevos numeros
+        </button>
+
+        <script>
+			document.getElementById("regenerate").addEventListener("click", function () {
+				location.reload();
+			});
+            </script>
+    </div>
+</div>
+
+<style>
+    .list-inline {
+        padding-left: 0;
+        list-style: none;
+    }
+</style>

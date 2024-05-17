@@ -1,0 +1,46 @@
+﻿@page
+@model ejercicios.Pages.CesarEncryptModel
+@{
+}
+
+<div class="container">
+
+	<h1>Calculadora de IMC</h1>
+
+	<form method="post">
+		<div class="form-group">
+			<label for="Texto">Texto</label>
+			<input type="text" class="form-control" id="Texto" name="Texto" asp-for="Texto" required>
+		</div>
+		<div class="form-group">
+			<label for="Nrecorrer">Recorrer N veces</label>
+			<input type="number" class="form-control" id="Nrecorrer" asp-for="Nrecorrer" required/>
+		</div>
+		<button type="submit" class="btn btn-primary">Calcular</button>
+	</form>
+
+	@if(Model.TextoCifrado != "0")
+	{
+		<div class="alert alert-info mt-3">
+			<p>Tu IMC es: @Model.TextoCifrado</p>
+			
+		</div>
+
+	}
+	@if (!ModelState.IsValid)
+	{
+		<div class="alert alert-danger mt-3">
+			<ul>
+				@foreach (var modelStateEntry in ModelState.Values)
+				{
+					foreach (var error in modelStateEntry.Errors)
+					{
+						<li>@error.ErrorMessage</li>
+					}
+				}
+			</ul>
+		</div>
+	}
+
+
+</div>

@@ -1,0 +1,63 @@
+﻿@page
+@model ejercicios.Pages.FormulasModel
+@{
+	ViewData["Title"] = "Formulas";
+}
+
+
+
+<div class="container">
+
+	<h1>Calculadora de IMC</h1>
+
+	<form method="post">
+		<div class="form-group">
+			<label for="A">A</label>
+			<input type="number" class="form-control" id="A" name="A" asp-for="A" required>
+		</div>
+		<div class="form-group">
+			<label for="B">B</label>
+			<input type="number" class="form-control" id="B" asp-for="B" required />
+		</div>
+		<div class="form-group">
+			<label for="X">X</label>
+			<input type="number" class="form-control" id="X" asp-for="X" required />
+		</div>
+		<div class="form-group">
+			<label for="Y">Y</label>
+			<input type="number" class="form-control" id="Y" asp-for="Y" required />
+		</div>
+		<div class="form-group">
+			<label for="N">N</label>
+			<input type="number" class="form-control" id="N" asp-for="N" required />
+		</div>
+		
+
+		<button type="submit" class="btn btn-primary">Calcular</button>
+	</form>
+
+	@if (Model.Result != null)
+	{
+		<div class="alert alert-info mt-3">
+			<p>El resultado del binomio es de @Model.Result</p>
+
+		</div>
+
+	}
+	@if (!ModelState.IsValid)
+	{
+		<div class="alert alert-danger mt-3">
+			<ul>
+				@foreach (var modelStateEntry in ModelState.Values)
+				{
+					foreach (var error in modelStateEntry.Errors)
+					{
+						<li>@error.ErrorMessage</li>
+					}
+				}
+			</ul>
+		</div>
+	}
+
+
+</div>
