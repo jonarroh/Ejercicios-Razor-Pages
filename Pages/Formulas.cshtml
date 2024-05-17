@@ -36,7 +36,8 @@
 		<button type="submit" class="btn btn-primary">Calcular</button>
 	</form>
 
-	@if (Model.Result != null)
+
+	@if (Model.Result != "Resultado")
 	{
 		<div class="alert alert-info mt-3">
 			<p>El resultado del binomio es de @Model.Result</p>

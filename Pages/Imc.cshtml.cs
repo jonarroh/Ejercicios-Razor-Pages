@@ -64,7 +64,8 @@ namespace ejercicios.Pages
 
 		private static double CalcularIMC(double masa, double estatura)
 		{
-			return masa / (estatura * estatura);
+			double estaturaKilos = estatura / 100;
+			return masa / (estaturaKilos* estaturaKilos);
 		}
 	}
 }
